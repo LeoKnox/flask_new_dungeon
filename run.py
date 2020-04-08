@@ -1,10 +1,19 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
+rooms = [
+    {
+        'title': 'Entry',
+        'flooring': 'Stone',
+        'length': 5,
+        'width': 5
+    }
+]
+
 @app.route("/")
 def hello():
-    return "<h1>Home!!</h1>"
+    return render_template('home.html', rooms=rooms)
 
 @app.route("/about")
 def about():

@@ -1,8 +1,12 @@
-<html>
-    <body>
-        <form method="POST" actions="/">
-            <input type="text" name="title">
-            <input type="submit" value="Add">
-        </form>
-    </body>
-</html>
+{% if title %}
+<title>{{ title }}</title>
+{% else %}
+<title>Dungeon App</title>
+{% endif %}
+
+{% for room in rooms %}
+<p>{{ room.title }}</p>
+<p>{{ room.flooring }}</p>
+<p>{{ room.length }}</p>
+<p>{{ room.width }}</p>
+{% endfor %}
