@@ -22,7 +22,9 @@ def __repr__(self):
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.form:
-        print(request.form)
+        book = Book(title = request.form.get("title"))
+        db.session.add(book)
+        db.session.commit()
     return render_template("home.html")
 
 if __name__ == "__main__":
