@@ -19,5 +19,13 @@ def hello():
 def about():
     return "<h1>Fun Dungeon Time</h1>"
 
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'User created {form.username.data}!', 'success')
+        return redirect(url_for('home'))
+    return render_template('register.html', title='Register', form=form)
+
 if __name__ == '__main__':
     app.run(debug='True')
